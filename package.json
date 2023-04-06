@@ -19,7 +19,9 @@
     "express-list-endpoints": "^6.0.0",
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.3",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
