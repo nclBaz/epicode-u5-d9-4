@@ -37,7 +37,7 @@ const googleStrategy = new GoogleStrategy(
         const accessToken = await createAccessToken({ _id: createdUser._id, role: createdUser.role })
 
         // 3.2 Then we go next (to /googleRedirect route handler function)
-        passportNext(null, { accessToken, what: "ever" })
+        passportNext(null, { accessToken })
       }
     } catch (error) {
       // 4. In case of errors we gonna catch'em and handle them
