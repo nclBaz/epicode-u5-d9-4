@@ -12,7 +12,8 @@ usersRouter.get("/googleLogin", passport.authenticate("google", { scope: ["profi
 
 usersRouter.get("/googleRedirect", passport.authenticate("google", { session: false }), (req, res, next) => {
   try {
-    res.redirect(`${process.env.FE_URL}?accessToken=${req.user.accessToken}`)
+    res.cookie("accessToken", req.user.accessToken, { httpOnly: true })
+    res.redirect(`${process.env.FE_URL}`)
   } catch (error) {
     next(error)
   }
