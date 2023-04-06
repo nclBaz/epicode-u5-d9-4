@@ -8,9 +8,15 @@ import { createTokens, verifyTokensAndCreateNewTokens } from "../lib/auth/tools.
 
 const usersRouter = express.Router()
 
-usersRouter.get("/googleLogin", passport.authenticate("google"))
+usersRouter.get("/googleLogin", passport.authenticate("google", { scope: ["profile", "email"] }))
 
-usersRouter.get("/googleRedirect")
+usersRouter.get("/googleRedirect", passport.authenticate("google", { session: false }), (req, res, next) => {
+  try {
+    res.send({ accessToken: req.user.accessToken })
+  } catch (error) {
+    next(error)
+  }
+})
 
 usersRouter.post("/", async (req, res, next) => {
   try {
